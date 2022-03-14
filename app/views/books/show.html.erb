@@ -20,12 +20,18 @@
           <td>
            <%=render 'favorites/favorite', book: @book %>
           </td>
+          <td>
+            コメント件数：<%= @book.comments.count %>
+          </td>
            <% if @user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book.id), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
             <td><%= link_to 'Destroy', book_path(@book.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
            <% end %>
         </tr>
       </table>
+      <div>
+        <%=render 'comments/comment',book: @book,comment: @comment %>
+      </div>
     </div>
   </div>
 </div>
